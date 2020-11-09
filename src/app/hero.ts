@@ -3,7 +3,9 @@ export class Hero {
     public name: string,
     public alterEgo: string,
     public description: string,
-    public photo: string
+    public photo: string,
+    public universe: string,
+    public id: number
   ){}
 
 

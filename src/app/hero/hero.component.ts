@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Hero } from '../hero';
+
 
 @Component({
   selector: 'jsh-hero',
@@ -8,12 +9,21 @@ import { Hero } from '../hero';
 })
 export class HeroComponent implements OnInit {
   @Input() hero:Hero;
+  @Output() edit= new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
 
   }
+
+  editHero() {
+  this.edit.emit(this.hero.id);
+}
+
+ callHero() {
+  alert( this.hero.name + ' has been called!');
+}
 
 
 
