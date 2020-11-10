@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+
 
 @Component({
   selector: 'jsh-edit-hero',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditHeroComponent implements OnInit {
 
-  constructor() { }
+  @Input() heroId;
+  hero: Hero;
+  @Output() close= new EventEmitter();
+
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.hero= this.heroService.getHero(this.heroId);
+  }
+
+  saveHero(){
+    this.close.emit();
   }
 
 }
